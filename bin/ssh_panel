@@ -1,0 +1,15 @@
+#!/bin/bash
+
+lines=0
+while true; do
+	output=$(ss -t -a | grep ssh)
+	clear_sequence=""
+	for ((i=0; i<$lines; i++)); do
+		clear_sequence+="\033[1A\033[2K"
+	done
+	lines=$(echo "$output" | wc -l)
+
+	echo -e "$clear_sequence$output"
+	sleep 1
+done
+
