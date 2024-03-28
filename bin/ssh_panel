@@ -2,7 +2,7 @@
 
 lines=0
 while true; do
-	netstat_output=$(sudo netstat -t -p | grep ssh)
+	netstat_output=$(sudo netstat -tp | grep ssh)
 	lsof_output=$(sudo lsof -i TCP:22 | grep .ssh)
 
 	full_output="$netstat_output\n\n$lsof_output"
